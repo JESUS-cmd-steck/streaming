@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myjo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Fondo oscuro con gradiente (responsivo) -->
+        <div class="background-gradient"></div>
+
+        <!-- Header (Navbar y logo principal) -->
+        <header class="header">
+            <img style="width: 149px; height: 118px;" src="imagenes/LogoF.png" alt="MYJO Logo" class="logo-small" />
+            <nav class="navbar">
+                <div>MYJO</div>
+                <div>Movies</div>
+                <div>Series</div>
+                <div>Categories</div>
+                <div id="auth-container" class="auth-container">
+                    <a href="register.html" id="login-button" class="login-button">Log In</a>
+                    <button id="logout-button" class="login-button" style="display: none;">Log Out</button>
+                    <span id="welcome-message" style="display: none; color: #ccc; margin-left: 10px;"></span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-swiper swiper">
+                <div class="swiper-wrapper">
+                    
+                    
+                                
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <!-- Planes Section -->
+        <section class="plans-section">
+            <h2 class="plans-title">CHOOSE THE BEST PLAN FOR YOU</h2>
+            <div class="plan-toggle-container">
+                <div class="plan-toggle">
+                    <button class="toggle-button monthly active" data-period="monthly">Monthly</button>
+                    <button class="toggle-button annual" data-period="annual">Annual</button>
+                </div>
+                <div class="toggle-line"></div>
+            </div>
+            <div class="plans-container">
+                <div class="plan-card" data-plan="basic">
+                    <h2 class="plan-title">Basic with Ads</h2>
+                    <ul class="plan-features">
+                        <li><span class="icon">📱</span> 2 Devices at a time</li>
+                        <li><span class="icon">📺</span> Full HD resolution</li>
+                    </ul>
+                    <div class="price">
+                        <span class="amount" data-monthly="$99.00" data-annual="$890.00">$99.00</span>
+                        <span class="per-month">/ mes</span>
+                    </div>
+                    <button class="select-plan-btn" data-plan="basic">Select Plan</button>
+                </div>
+                <div class="plan-card" data-plan="standard">
+                    <h2 class="plan-title">Standard</h2>
+                    <ul class="plan-features">
+                        <li><span class="icon">📱</span> 2 Devices at a time</li>
+                        <li><span class="icon">📺</span> Full HD resolution</li>
+                        <li><span class="icon">⬇️</span> Downloads to enjoy online</li>
+                    </ul>
+                    <div class="price">
+                        <span class="amount" data-monthly="$150.00" data-annual="$1350.00">$150.00</span>
+                        <span class="per-month">/ mes</span>
+                    </div>
+                    <button class="select-plan-btn" data-plan="standard">Select Plan</button>
+                </div>
+                <div class="plan-card" data-plan="platinum">
+                    <h2 class="plan-title">Platinum</h2>
+                    <ul class="plan-features">
+                        <li><span class="icon">📱</span> 4 Devices at a time</li>
+                        <li><span class="icon">📺</span> 4K Ultra resolution</li>
+                        <li><span class="icon">⬇️</span> Downloads to enjoy online</li>
+                        <li><span class="icon">🔊</span> Audio Dolby Atmos*</li>
+                    </ul>
+                    <div class="price">
+                        <span class="amount" data-monthly="$200.00" data-annual="$1800.00">$200.00</span>
+                        <span class="per-month">/ mes</span>
+                    </div>
+                    <button class="select-plan-btn" data-plan="platinum">Select Plan</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carrusel de Categorías -->
+        <section class="carousel-section">
+            <h2 class="categories-title">CATEGORIES</h2>
+            <div class="carousel-container categories-carousel">
+                <div class="swiper categories-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="imagenes/batman.png" alt="Batman"></div>
+                        <div class="swiper-slide"><img src="imagenes/F&F.png" alt="Furious 8"></div>
+                        <div class="swiper-slide"><img src="imagenes/Up.png" alt="Up"></div>
+                        <div class="swiper-slide"><img src="imagenes/bichos.png" alt="A Bug's Life"></div>
+                        <div class="swiper-slide"><img src="imagenes/intensamente.png" alt="Inside Out"></div>
+                        <div class="swiper-slide"><img src="imagenes/Bee movie.png" alt="Bee Movie"></div>
+                        <div class="swiper-slide"><img src="imagenes/Guerra z.png" alt="World War Z"></div>
+                        <div class="swiper-slide"><img src="imagenes/norbit.png" alt="Norbit"></div>
+                        <div class="swiper-slide"><img src="imagenes/spiderman.png" alt="Spider-Man"></div>
+                        <div class="swiper-slide"><img src="imagenes/Flash.png" alt="Flash"></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Segundo Carrusel -->
+        <section class="second-carousel-section">
+            <h2 class="second-carousel-title">THERE IS SO MUCH TO SEE IN MYJO</h2>
+            <div class="carousel-container second-carousel">
+                <div class="swiper second-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="imagenes/silo.png" alt="World War Z"></div>
+                        <div class="swiper-slide"><img src="imagenes/spiderman serie.jpeg" alt="Bee Movie"></div>
+                        <div class="swiper-slide"><img src="imagenes/Sonic 3.webp" alt="Spider-Man"></div>
+                        <div class="swiper-slide"><img src="imagenes/ET.webp" alt="Norbit"></div>
+                        <div class="swiper-slide"><img src="imagenes/RM.jpg" alt="Flash"></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenido adicional -->
+        <div class="additional-content" style="text-align: center; color: white; font-size: 16px; font-family: SF Pro Display; font-weight: 400; padding: 20px 0;">
+            *Full HD, 4K Ultra HD y Dolby Atmos no están disponibles en todo el contenido de cada plan.<br/>
+            El contenido en vivo en los planes Estándar y Platino puede contener publicidad. Las descargas pueden estar limitadas de acuerdo con el tipo de contenido. Para más información
+        </div>
+
+        <!-- Footer Rediseñado con Gradiente Desvanecido -->
+        <footer class="footer">
+            <div class="footer-logo">
+                <img style="width: 231px; height: 182px;" src="imagenes/LogoF.png" alt="MYJO Logo" />
+                <h1 style="color: white; font-size: 100px; font-family: SF Pro Display; font-weight: 600;">MYJO</h1>
+            </div>
+            <h2 class="footer-question">STILL HAVE QUESTIONS?</h2>
+            <div class="footer-links">
+                <input type="text" class="footer-link" value="How do I register?" readonly>
+                <input type="text" class="footer-link" value="Where is MYJO available?" readonly>
+                <input type="text" class="footer-link" value="How much does MYJO cost?" readonly>
+                <input type="text" class="footer-link" value="What devices does MYJO work on?" readonly>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><img src="imagenes/instagram.png" alt="Instagram" /></a>
+                <a href="#" class="social-icon"><img src="imagenes/facebook.png" alt="Facebook" /></a>
+                <a href="#" class="social-icon"><img src="imagenes/twitter.png" alt="Twitter" /></a>
+                <a href="#" class="social-icon"><img src="imagenes/youtube.png" alt="YouTube" /></a>
+                <a href="#" class="social-icon"><img src="imagenes/tiktok.png" alt="TikTok" /></a>
+            </div>
+            <div class="footer-bottom">
+                <div>Términos de uso</div>
+                <div>Política de privacidad</div>
+                <div>Centro de ayuda</div>
+                <div>Especificaciones de anuncios</div>
+                <div>Condiciones de Suscripción</div>
+                <div>Configuración de Cookies</div>
+                <p>Todos los derechos reservados. © 2025 Televisa, S. de R.L. de C.V.</p>
+            </div>
+            <div class="footer-contact">1920 × 4985</div>
+        </footer>
+
+        <!-- Imágenes y elementos SVG existentes -->
+        <img style="width: 2138px; height: auto; left: -50px; top: -189px; position: absolute" src="imagenes/Collage de fotos vertical Pizarrón de vida saturado marrón (1) 1.png" />
+        <div data-svg-wrapper style="left: 0px; top: -10px; position: absolute">
+            <svg width="1920" height="1186" viewBox="0 0 1920 1186" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g filter="url(#filter0_d_77_15)">
+                    <path d="M-13 -17H1920V1178H-13V-17Z" fill="url(#paint0_linear_77_15)" shape-rendering="crispEdges"/>
+                    <path d="M-13 -17H1920V1178H-13V-17Z" fill="url(#paint1_linear_77_15)" shape-rendering="crispEdges"/>
+                </g>
+                <defs>
+                    <filter id="filter0_d_77_15" x="-17" y="-17" width="1941" height="1203" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_77_15"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_77_15" result="shape"/>
+                    </filter>
+                    <linearGradient id="paint0_linear_77_15" x1="1087.86" y1="1042.47" x2="1083.07" y2="32.5" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.154"/>
+                        <stop offset="1" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_77_15" x1="953.5" y1="4.3797" x2="953.5" y2="1166.85" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.104"/>
+                        <stop offset="0.464" stop-opacity="0"/>
+                        <stop offset="0.679" stop-opacity="0.53"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script src="plans.js"></script>
+    <script>
+        var swiper = new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        var categoriesSwiper = new Swiper('.categories-swiper', {
+            slidesPerView: 4,
+            spaceBetween: 10,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        var secondSwiper = new Swiper('.second-swiper', {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>

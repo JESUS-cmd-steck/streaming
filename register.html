@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styleregister.css">
+</head>
+<body>
+    <div class="container">
+        <div class="background-overlay"></div>
+        <div class="form-container">
+            <img class="logo" src="imagenes/LogoF.png" alt="Logo">
+            <h2>Sign in</h2>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="tu@email.com" style="opacity: 0.20; background: #D9D9D9; border-radius: 10px; border: 4px #056DAD solid;">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" style="opacity: 0.20; background: #D9D9D9; border-radius: 10px; border: 4px #056DAD solid;">
+                <div class="eye-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="white" stroke-opacity="0.26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="white" stroke-opacity="0.26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div id="status-message" class="status-message"></div> <!-- Elemento para mensajes de estado -->
+            <button class="login-button" id="login-button">Log In</button>
+            <p class="mijo-text">Log in with your account <strong>MIJO</strong></p>
+            <p class="already-account">Don't have an account? <a href="Login.html" class="signin-link">Register</a></p>
+            <p class="recover-password">Recover password</p>
+        </div>
+    </div>
+
+<script src="scriptlogin.js"></script>
+</body>
+</html>

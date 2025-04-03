@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: url('imagenes/Collage\ de\ fotos\ vertical\ Pizarrón\ de\ vida\ saturado\ marrón\ \(1\)\ 1.png') repeat-x; /* Cambiamos a repeat-x para permitir el movimiento */
+    background-size: 200% 100%; /* Hacemos la imagen más ancha para que el movimiento sea visible */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    animation: moveBackground 30s linear infinite; /* Animación para mover el fondo */
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 0;
+    }
+    100% {
+        background-position: -200% 0; /* Mueve el fondo hacia la izquierda */
+    }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.form-container {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    color: white;
+}
+
+.logo {
+    width: 60px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #b0b0b0;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #b0b0b0;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #1a1a1a;
+    color: white;
+    font-size: 14px;
+}
+
+.input-group input::placeholder {
+    color: #666;
+}
+
+.status-message {
+    min-height: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #ff5555;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background: #1e90ff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-button:hover {
+    background: #1c86ee;
+}
+
+.already-account {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #b0b0b0;
+}
+
+.already-account a {
+    color: #1e90ff;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.already-account a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .form-container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .submit-button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

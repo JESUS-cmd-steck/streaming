@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://buy.stripe.com/test_28obMw2Xnb4f8JG6oo">
+</head>
+<body>
+    <div class="container">
+        <div class="background-gradient"></div>
+        <div class="form-container">
+            <h2>Confirmacion de Plan</h2>
+            <p id="confirmation-message"></p>
+            <button id="back-button" class="login-button">Back to Home</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedPlan = JSON.parse(localStorage.getItem('selectedPlan'));
+            const message = document.getElementById('confirmation-message');
+            if (selectedPlan) {
+                message.textContent = `Has seleccionado el plan ${selectedPlan.plan} por ${selectedPlan.price} (${selectedPlan.period}). ¡Gracias por tu compra!`;
+            } else {
+                message.textContent = 'No se encontro un plan seleccionado.';
+            }
+
+            document.getElementById('back-button').addEventListener('click', function() {
+                window.location.href = 'dashboard.html';
+            });
+        });
+    </script>
+</body>
+</html>

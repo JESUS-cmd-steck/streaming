@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="styleshome.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="imagenes/LogoF.png" alt="MYJO Logo" class="logo-small" />
+            </div>
+            <nav class="navbar">
+                <div class="nav-btn" onclick="filterNewMovies()">New Movie</div>
+                <div class="nav-btn genre-btn" onclick="toggleGenres()">
+                    Genre
+                    <div class="genre-dropdown" id="genreDropdown">
+                        <div class="genre-item" onclick="filterByGenre('Action')">Action</div>
+                        <div class="genre-item" onclick="filterByGenre('Comedy')">Comedy</div>
+                        <div class="genre-item" onclick="filterByGenre('Sci-fi')">Sci-fi</div>
+                        <div class="genre-item" onclick="filterByGenre('Drama')">Drama</div>
+                        <div class="genre-item" onclick="filterByGenre('Thriller')">Thriller</div>
+                        <div class="genre-item" onclick="filterByGenre('Horror')">Horror</div>
+                        <div class="genre-item" onclick="filterByGenre('Romance')">Romance</div>
+                        <div class="genre-item" onclick="filterByGenre('Animation')">Animation</div>
+                    </div>
+                </div>
+                <div class="nav-btn" onclick="filterMovies()">Movies</div>
+                <div class="nav-btn" onclick="filterTVSeries()">Series</div>
+            </nav>
+            <div class="search-container">
+                <div class="search-icon" onclick="toggleSearch()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="search-input-container" id="searchInputContainer">
+                    <input type="text" id="searchInput" placeholder="Search movies or series..." />
+                    <button class="search-submit" onclick="performSearch()">Search</button> 
+                </div>
+            </div>
+        </header>
+
+        <!-- Banner Principal -->
+<section class="hero">
+    <div class="hero-content">
+        <img id="hero-background" src="imagenes/real steel.png" alt="Real Steel Movie Poster" class="hero-background" />
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1 id="hero-title" class="hero-title">Real Steel</h1>
+            <div id="hero-info" class="hero-info">
+                <span class="imdb-rating">
+                    <span class="imdb-logo">IMDb</span> <span id="hero-imdb">8 🙂 (12,827)</span>
+               I</span>
+                <span id="hero-year">• 2021</span>
+                <span id="hero-duration">• 1 hour 55 minutes</span>
+                <span id="hero-genre">• Sci-fi</span>
+            </div>
+            <p id="hero-description" class="hero-description">
+                A failed boxer who loses his chance to win a title when powerful robots weighing 90 kilos and more than two meters tall begin to compete.
+                <a href="#" class="see-more">See more</a>
+            </p>
+            <div class="hero-buttons">
+                <button class="trailer-btn">Watch trailer</button>
+                <button id="watch-btn" class="watch-btn" onclick="openModal('peliculas/real steel.mp4', 'Real Steel')">Watch now</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal para el Reproductor de Video -->
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">×</span>
+        <div class="video-player">
+            <video id="videoPlayer" class="video-element">
+                <source id="videoSource" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-controls">
+                <div class="video-header">
+                    <span id="video-header-title" class="video-title">Real Steel</span>
+                    <div class="video-actions">
+                        <button class="action-btn fullscreen-btn">
+                            <img src="https://placehold.co/47x35" alt="Fullscreen" />
+                        </button>
+                        <button class="action-btn settings-btn">
+                            <img src="https://placehold.co/50x42" alt="Settings" />
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Recently Updated Section -->
+        <section class="content-section" data-type="series">
+            <div class="section-header">
+                <h2 class="section-title">Recently Updated</h2>
+            </div>
+            <div class="content-grid">
+                <div class="content-card" onclick="updateBanner('Los pitufos', 'imagenes/los pitufos G.webp', '7.5 (9,500)', '• 2023', '• 1 hour 30 minutes', '• Action', 'A superhero speeds through time to save the world.', 'peliculas/Los pitufos.mp4', 'Los pitufos')">
+                    <img src="imagenes/los pitufos.webp" alt="The Flash" class="card-image">
+                    <h3>Los pitufos</h3>
+                    <p>Movie</p>
+                    <p class="card-meta">11/05/23</p>
+                </div>
+                <div class="content-card" onclick="updateBanner('Civil War', 'imagenes/civil G.jpeg', '6.8 (4,200)', '• 2023', '• 1 hour 20 minutes', '• Comedy', 'A retired operative returns to action.', 'peliculas/fubar.mp4', 'Civil War')">
+                    <img src="imagenes/civil war.jpeg" alt="Civil War" class="card-image">
+                    <h3>Civil War</h3>
+                    <p>Movie</p>
+                    <p class="card-meta">11/05/23</p>
+                </div>
+                <div class="content-card" onclick="updateBanner('Monster University', 'imagenes/MU G.jpeg', '7.1 (6,300)', '• 2016', '• 1 hour 40 minutes', '• Drama', 'Passengers of a flight experience strange events.', 'peliculas/Monsters.University.2013.bluray-latino-e-ingles-subt.mp4', 'Monster University')">
+                    <img src="imagenes/MU.jpeg" alt="Monster University" class="card-image">
+                    <h3>Monster University</h3>
+                    <p>Movie</p>
+                    <p class="card-meta">11/05/23</p>
+                </div>
+                <div class="content-card" onclick="updateBanner('Norbit', 'imagenes/norbit G.jpeg', '8.0 (5,600)', '• 2023', '• 1 hour 50 minutes', '• Sci-fi', 'Survivors live in a subterranean bunker.', 'peliculas/norbit.mkv', 'Norbit')">
+                    <img src="imagenes/norbit.png" alt="Norbit" class="card-image">
+                    <h3>Norbit</h3>
+                    <p>Movie</p>
+                    <p class="card-meta">11/05/23</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Section -->
+        <section class="content-section" data-type="movies">
+            <div class="section-header">
+                <h2 class="section-title">Trending</h2>
+                <a href="#" class="view-all">View all <span class="arrow">→</span></a>
+            </div>
+            <div class="content-grid large">
+                <div class="content-card large" onclick="updateBanner('The Batman', 'imagenes/BTB.webp', '7.2 (3,800)', '• 2023', '• 2 hours', '• Action, Mistery', 'A story of crime and redemption.', 'peliculas/The Batman.mp4', 'The Batman')">
+                    <img src="imagenes/TB.webp" alt="The Batman" class="card-image">
+                    <h3>The Batman</h3>
+                    <p class="card-meta">HD • 3:12:00</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('Fast X', 'imagenes/BFX.webp', '6.9 (7,100)', '• 2023', '• 2 hours 21 minutes', '• Action, Crime, Thriller', 'The family faces new threats.', 'peliculas/fastx.mp4', 'Fast X')">
+                    <img src="imagenes/FX.jpg" alt="Fast X" class="card-image">
+                    <h3>Fast X</h3>
+                    <p class="card-meta">HD • 3:12:00</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('The Flash', 'imagenes/B2TF.jpg', '5.8 (2,900)', '• 2023', '• 3 hour 40 minutes', '• Comedy, Action', 'Speedster helping the destiny of the multiverse.', 'peliculas/The-Flash.mp4', 'The Flash')">
+                    <img src="imagenes/TF.jpg" alt="The Flash" class="card-image">
+                    <h3>The Flash</h3>
+                    <p class="card-meta">HD • 3:12:00</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('Dejame salir', 'imagenes/dejame salir G.webp', '5.8 (2,900)', '• 2023', '• 3 hour 40 minutes', '• Comedy, Action', 'Let Me Out is a horror and suspense film directed by Jordan Peele, who also wrote the script. The film was released in 2017 and tells the story of Chris, a young African American played by Daniel Kaluuya, who visits the family of his white girlfriend, Rose, played by Allison Williams.', 'peliculas/The-Flash.mp4', 'The Flash')">
+                    <img src="imagenes/dejame salir.webp" alt="Dejame salir" class="card-image">
+                    <h3>Dejame salir</h3>
+                    <p class="card-meta">HD • 3:12:00</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Release - Movies Section -->
+        <section class="content-section" data-type="movies" data-new="true">
+            <div class="section-header">
+                <h2 class="section-title">New Release - Movies</h2>
+                <a href="#" class="view-all">View all <span class="arrow">→</span></a>
+            </div>
+            <div class="content-grid large">
+                <div class="content-card large" onclick="updateBanner('Sonic 3', 'imagenes/Sonic 3.webp', '5.9 (4,500)', '• 2023', '• 1 hour 50 minutes', '• Action, Comedy', 'A spy and a farmer team up.', 'peliculas/ghosted.mp4', 'Ghosted')">
+                    <img src="imagenes/Sonic 3.webp" alt="Ghosted" class="card-image">
+                    <h3>Sonic 3</h3>
+                    <p class="card-meta">HD • 3:12:00</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('John Wick: Chapter 4', 'imagenes/BJW4.jpg', '7.7 (9,200)', '• 2023', '• 2 hours 49 minutes', '• Action, Thriller', 'John Wick seeks vengeance.', 'peliculas/john-wick-4.mp4', 'John Wick: Chapter 4')">
+                    <img src="imagenes/JW4.jpg" alt="John Wick: Chapter 4" class="card-image">
+                    <h3>John Wick: Chapter 4</h3>
+                    <p class="card-meta">HD • 3:12:00</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('Guardians of the Galaxy Vol. 3', 'imagenes/BGGV3.jpg', '7.9 (8,300)', '• 2023', '• 2 hours 30 minutes', '• Action, Sci-fi', 'The Guardians face a new threat.', 'peliculas/guardians-3.mp4', 'Guardians of the Galaxy Vol. 3')">
+                    <img src="imagenes/GGV3.jpg" alt="Guardians of the Galaxy Vol.3" class="card-image">
+                    <h3>Guardians of the Galaxy Vol. 3</h3>
+                    <p class="card-meta">HD • 3:12:00</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('El Titere', 'imagenes/B2ET.jpg', '7.4 (6,700)', '• 2023', '• 1 hours 53 minutes', '• Suspense, Horror', 'A horror movie.', 'peliculas/El-Titere.mp4', 'El Titere')">
+                    <img src="imagenes/ET.webp" alt="El Titere" class="card-image">
+                    <h3>El Titere</h3>
+                    <p class="card-meta">HD • 3:12:00</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Release - Series Section -->
+        <section class="content-section" data-type="series" data-new="true">
+            <div class="section-header">
+                <h2 class="section-title">New Release - Series</h2>
+                <a href="#" class="view-all">View all <span class="arrow">→</span></a>
+            </div>
+            <div class="content-grid large">
+                <div class="content-card large" onclick="updateBanner('Loki', 'imagenes/BL.webp', '8.0 (5,600)', '• 2023', '• 2 Seasons', '• Sci-fi', 'Survivors live.', 'peliculas/Loki.mp4', 'Loki')">
+                    <img src="imagenes/l.jpg" alt="Loki" class="card-image">
+                    <h3>Loki</h3>
+                    <p class="card-meta">HD Season 1</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('Spider-Man', 'imagenes/BSM.jpeg', '6.7 (4,100)', '• 2025', '• 1 Season', '• Action', 'A Hero.', 'peliculas/Spiderman.mp4', 'Spider-Man')">
+                    <img src="imagenes/SM.jpg" alt="Spider-Man" class="card-image">
+                    <h3>Spider-Man</h3>
+                    <p class="card-meta">HD Season 1</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('Gotam', 'imagenes/BG.jpg', '7.3 (3,900)', '• 2014', '• 5 Seasons', '• Action, Drama', 'A wine competition unfolds.', 'peliculas/Gotam.mp4', 'Gotam')">
+                    <img src="imagenes/G.jpg" alt="Gotam" class="card-image">
+                    <h3>Gotam</h3>
+                    <p class="card-meta">HD Season 1</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('Rick and Morty', 'imagenes/BRM.jpg', '7.6 (5,200)', '• 2013', '• 7 Seasons', '• Thriller', 'An agent uncovers a conspiracy.', 'peliculas/Rick-and-Morty.mp4', 'Rick and Morty')">
+                    <img src="imagenes/RM.jpg" alt="Rick and Morty" class="card-image">
+                    <h3>Rick and Morty</h3>
+                    <p class="card-meta">HD Season 1</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Section -->
+        <section class="content-section" data-type="movies">
+            <div class="section-header">
+                <h2 class="section-title">Recommended</h2>
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="switchTab('movies')">Movies</button>
+                    <button class="tab-btn" onclick="switchTab('series')">Series</button>
+                    <button class="tab-btn" onclick="switchTab('animation')">Animation</button>
+                </div>
+                <a href="#" class="view-all">View all <span class="arrow">→</span></a>
+            </div>
+            <div class="content-grid large">
+                <div class="content-card large" onclick="updateBanner('Vacaciones', 'imagenes/BV.jpg', '6.5 (3,400)', '• 2015', '• 1 hour 50 minutes', '• Comedy', 'Funny moments.', 'peliculas/Vacaciones.mp4', 'Vacaciones')">
+                    <img src="imagenes/V.jpg" alt="Vacaciones" class="card-image">
+                    <h3>Vacaciones</h3>
+                    <p class="card-meta">HD • 1:49:00</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('Speed', 'imagenes/BMV.jpeg', '6.0 (2,800)', '• 1994', '• 1 hour 40 minutes', '• Action, Romance', 'A love story through texts.', 'peliculas/Speed.mp4', 'Speed')">
+                    <img src="imagenes/MV.webp" alt="Speed" class="card-image">
+                    <h3>Speed</h3>
+                    <p class="card-meta">HD • 3:12:00</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('Number 9', 'imagenes/BN9.webp', '6.2 (3,600)', '• 2010', '• 1 hour 30 minutes', '• Thriller', 'A detective uncovers mind control.', 'peliculas/Number 9.mp4', 'Number 9')">
+                    <img src="imagenes/N9.jpg" alt="Number 9" class="card-image">
+                    <h3>Number 9</h3>
+                    <p class="active">HD • 3:12:00</p>
+                </div>
+                <div class="content-card large" onclick="updateBanner('La Dama de Negro', 'imagenes/BMN.jpg', '6.1 (2,500)', '• 2012', '• 1 hour 40 minutes', '• Suspense', 'An horror movie.', 'peliculas/La-Dama-de-Negro.mp4', 'La Dama de Negro')">
+                    <img src="imagenes/MN.jpg" alt="La Dama de Negro" class="card-image">
+                    <h3>La Dama de Negro</h3>
+                    <p class="card-meta">HD • 3:12:00</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="#" class="social-icon"><img src="imagenes/instagram.png" alt="Instagram"></a>
+                <a href="#" class="social-icon"><img src="imagenes/facebook.png" alt="Facebook"></a>
+                <a href="#" class="social-icon"><img src="imagenes/twitter.png" alt="Twitter"></a>
+                <a href="#" class="social-icon"><img src="imagenes/youtube.png" alt="YouTube"></a>
+                <a href="#" class="social-icon"><img src="imagenes/tiktok.png" alt="TikTok"></a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Política de privacidad</a>
+                <a href="#">Términos de uso</a>
+                <a href="#">Especificaciones de anuncios</a>
+                <a href="#">Centro de ayuda</a>
+                <a href="#">Condiciones de Suscripción</a>
+                <a href="#">Configuración de Cookies</a>
+            </div>
+            <p class="footer-copyright">Todos los derechos reservados © 2025 Televisa, S. de R.L. de C.V.</p>
+        </footer>
+    </div>
+
+    <!-- Modal de Video -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title" class="modal-title"></h2>
+            <div class="modal-actions">
+                <button class="modal-action-btn" onclick="toggleFullScreen()">⤢</button>
+                <button class="modal-action-btn" onclick="closeModal()">✖</button>
+            </div>
+            <video id="modal-video" controls>
+                <source src="" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            <div class="custom-controls">
+                <button class="control-btn" onclick="rewindVideo()">⏪</button>
+                <button class="control-btn" onclick="togglePlay()">▶/❚❚</button>
+                <button class="control-btn" onclick="fastForwardVideo()">⏩</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let inactivityTimeout;
+        let lastMousePosition = { x: 0, y: 0 };
+        let isMouseMoving = false;
+
+        // Lista de películas y series
+        const mediaList = [
+            { 
+                title: "Real Steel", 
+                imageUrl: "imagenes/real steel.png", 
+                imdbRating: "8.2 (12,827)", 
+                year: "• 2021", 
+                duration: "• 1 hour 55 minutes", 
+                genre: "• Sci-fi", 
+                description: "A failed boxer who loses his chance to win a title when powerful robots weighing 90 kilos and more than two meters tall begin to compete.", 
+                videoUrl: "peliculas/real steel.mp4", 
+                modalTitle: "Real Steel" 
+            },
+            { 
+                title: "Los pitufos", 
+                imageUrl: "imagenes/los pitufos G.webp", 
+                imdbRating: "7.5 (9,500)", 
+                year: "• 2023", 
+                duration: "• 1 hour 30 minutes", 
+                genre: "• Action", 
+                description: "A superhero speeds through time to save the world.", 
+                videoUrl: "peliculas/real steel.mp4", 
+                modalTitle: "Los pitufos" 
+            },
+            { 
+                title: "Fubar", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "6.8 (4,200)", 
+                year: "• 2023", 
+                duration: "• 1 hour 20 minutes", 
+                genre: "• Comedy", 
+                description: "A retired operative returns to action.", 
+                videoUrl: "peliculas/fubar.mp4", 
+                modalTitle: "Fubar" 
+            },
+            { 
+                title: "Manifest", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "7.1 (6,300)", 
+                year: "• 2022", 
+                duration: "• 1 hour 40 minutes", 
+                genre: "• Drama", 
+                description: "Passengers of a flight experience strange events.", 
+                videoUrl: "peliculas/manifest.mp4", 
+                modalTitle: "Manifest" 
+            },
+            { 
+                title: "Silo", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "8.0 (5,600)", 
+                year: "• 2023", 
+                duration: "• 1 hour 50 minutes", 
+                genre: "• Sci-fi", 
+                description: "Survivors live in a subterranean bunker.", 
+                videoUrl: "peliculas/silo.mp4", 
+                modalTitle: "Silo" 
+            },
+            { 
+                title: "Medellín", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "7.2 (3,800)", 
+                year: "• 2023", 
+                duration: "• 2 hours", 
+                genre: "• Action, Comedy", 
+                description: "A story of crime and redemption.", 
+                videoUrl: "peliculas/medellin.mp4", 
+                modalTitle: "Medellín" 
+            },
+            { 
+                title: "Fast X", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "6.9 (7,100)", 
+                year: "• 2023", 
+                duration: "• 2 hours 21 minutes", 
+                genre: "• Action, Crime, Thriller", 
+                description: "The family faces new threats.", 
+                videoUrl: "peliculas/fastx.mp4", 
+                modalTitle: "Fast X" 
+            },
+            { 
+                title: "The Black Demon", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "5.8 (2,900)", 
+                year: "• 2023", 
+                duration: "• 1 hour 40 minutes", 
+                genre: "• Horror, Thriller", 
+                description: "A giant shark terrorizes a town.", 
+                videoUrl: "peliculas/black-demon.mp4", 
+                modalTitle: "The Black Demon" 
+            },
+            { 
+                title: "Ghosted", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "5.9 (4,500)", 
+                year: "• 2023", 
+                duration: "• 1 hour 50 minutes", 
+                genre: "• Action, Comedy", 
+                description: "A spy and a farmer team up.", 
+                videoUrl: "peliculas/ghosted.mp4", 
+                modalTitle: "Ghosted" 
+            },
+            { 
+                title: "John Wick: Chapter 4", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "7.7 (9,200)", 
+                year: "• 2023", 
+                duration: "• 2 hours 49 minutes", 
+                genre: "• Action, Thriller", 
+                description: "John Wick seeks vengeance.", 
+                videoUrl: "peliculas/john-wick-4.mp4", 
+                modalTitle: "John Wick: Chapter 4" 
+            },
+            { 
+                title: "Guardians of the Galaxy Vol. 3", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "7.9 (8,300)", 
+                year: "• 2023", 
+                duration: "• 2 hours 30 minutes", 
+                genre: "• Action, Sci-fi", 
+                description: "The Guardians face a new threat.", 
+                videoUrl: "peliculas/guardians-3.mp4", 
+                modalTitle: "Guardians of the Galaxy Vol. 3" 
+            },
+            { 
+                title: "The Covenant", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "7.4 (6,700)", 
+                year: "• 2023", 
+                duration: "• 2 hours 3 minutes", 
+                genre: "• Action, Drama", 
+                description: "A soldier saves his interpreter.", 
+                videoUrl: "peliculas/the-covenant.mp4", 
+                modalTitle: "The Covenant" 
+            },
+            { 
+                title: "Black Knight", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "6.7 (4,100)", 
+                year: "• 2023", 
+                duration: "• 1 hour 20 minutes", 
+                genre: "• Action", 
+                description: "A knight protects a kingdom.", 
+                videoUrl: "peliculas/black-knight.mp4", 
+                modalTitle: "Black Knight" 
+            },
+            { 
+                title: "Drops of God", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "7.3 (3,900)", 
+                year: "• 2023", 
+                duration: "• 1 hour 30 minutes", 
+                genre: "• Drama", 
+                description: "A wine competition unfolds.", 
+                videoUrl: "peliculas/drops-of-god.mp4", 
+                modalTitle: "Drops of God" 
+            },
+            { 
+                title: "The Night Agent", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "7.6 (5,200)", 
+                year: "• 2023", 
+                duration: "• 1 hour 40 minutes", 
+                genre: "• Thriller", 
+                description: "An agent uncovers a conspiracy.", 
+                videoUrl: "peliculas/night-agent.mp4", 
+                modalTitle: "The Night Agent" 
+            },
+            { 
+                title: "Robots", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "6.5 (3,400)", 
+                year: "• 2023", 
+                duration: "• 1 hour 50 minutes", 
+                genre: "• Comedy", 
+                description: "Robots take over a town.", 
+                videoUrl: "peliculas/robots.mp4", 
+                modalTitle: "Robots" 
+            },
+            { 
+                title: "Love Again", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "6.0 (2,800)", 
+                year: "• 2023", 
+                duration: "• 1 hour 40 minutes", 
+                genre: "• Romance", 
+                description: "A love story through texts.", 
+                videoUrl: "peliculas/love-again.mp4", 
+                modalTitle: "Love Again" 
+            },
+            { 
+                title: "Hypnotic", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "6.2 (3,600)", 
+                year: "• 2023", 
+                duration: "• 1 hour 30 minutes", 
+                genre: "• Thriller", 
+                description: "A detective uncovers mind control.", 
+                videoUrl: "peliculas/hypnotic.mp4", 
+                modalTitle: "Hypnotic" 
+            },
+            { 
+                title: "Paint", 
+                imageUrl: "https://placehold.co/1928x1080", 
+                imdbRating: "6.1 (2,500)", 
+                year: "• 2023", 
+                duration: "• 1 hour 40 minutes", 
+                genre: "• Comedy", 
+                description: "An artist faces rivalry.", 
+                videoUrl: "peliculas/paint.mp4", 
+                modalTitle: "Paint" 
+            }
+        ];
+
+        function updateBanner(title, imageUrl, imdbRating, year, duration, genre, description, videoUrl, modalTitle) {
+    const elements = {
+        heroBackground: document.getElementById('hero-background'),
+        heroTitle: document.getElementById('hero-title'),
+        heroImdb: document.getElementById('hero-imdb'),
+        heroYear: document.getElementById('hero-year'),
+        heroDuration: document.getElementById('hero-duration'),
+        heroGenre: document.getElementById('hero-genre'),
+        heroDescription: document.getElementById('hero-description'),
+        watchButton: document.getElementById('watch-btn')
+    };
+
+    for (const [key, element] of Object.entries(elements)) {
+        if (!element) {
+            console.error(`Elemento ${key} no encontrado.`);
+            return;
+        }
+    }
+
+    elements.heroBackground.src = `${imageUrl}?t=${new Date().getTime()}`;
+    elements.heroBackground.alt = `${title} Movie Poster`;
+    elements.heroBackground.onerror = () => {
+        console.error(`No se pudo cargar la imagen: ${imageUrl}`);
+        elements.heroBackground.src = "imagenes/fallback.jpg";
+    };
+
+    elements.heroTitle.textContent = title;
+    elements.heroImdb.textContent = imdbRating;
+    elements.heroYear.textContent = year;
+    elements.heroDuration.textContent = duration;
+    elements.heroGenre.textContent = genre;
+    elements.heroDescription.childNodes[0].textContent = description + " ";
+    elements.watchButton.setAttribute('onclick', `openModal('${videoUrl}', '${modalTitle}')`);
+
+    
+    document.querySelector('.hero').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function openModal(videoUrl, modalTitle) {
+    const modal = document.getElementById('modal');
+    const modalVideo = document.getElementById('modal-video');
+    const modalSource = modalVideo.querySelector('source');
+    const modalTitleElement = document.getElementById('modal-title');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+
+    // Asigna la fuente y recarga el video
+    modalSource.src = videoUrl;
+    modalVideo.load();
+    modalTitleElement.textContent = modalTitle;
+    modal.style.display = 'flex';
+    playPauseBtn.textContent = '▶'; // Botón en "Play" por defecto
+
+    // Maneja errores
+    modalVideo.onerror = () => {
+        console.error("Error al cargar el video:", modalVideo.error);
+        alert("No se pudo cargar el video. Verifica la ruta o el formato.");
+    };
+
+    // Actualiza el botón cuando el video se reproduce o pausa
+    modalVideo.onplay = () => playPauseBtn.textContent = '❚❚';
+    modalVideo.onpause = () => playPauseBtn.textContent = '▶';
+}
+
+function closeModal() {
+    const modal = document.getElementById('modal');
+    const modalVideo = document.getElementById('modal-video');
+    modalVideo.pause();
+    modalVideo.currentTime = 0;
+    modal.style.display = 'none';
+}
+
+function togglePlay() {
+    const modalVideo = document.getElementById('modal-video');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    if (modalVideo.paused) {
+        modalVideo.play().catch(error => {
+            console.error("Error al reproducir:", error);
+            alert("No se pudo reproducir: " + error.message);
+        });
+        playPauseBtn.textContent = '❚❚';
+    } else {
+        modalVideo.pause();
+        playPauseBtn.textContent = '▶';
+    }
+}
+
+function rewindVideo() {
+    const modalVideo = document.getElementById('modal-video');
+    modalVideo.currentTime = Math.max(0, modalVideo.currentTime - 10);
+}
+
+function fastForwardVideo() {
+    const modalVideo = document.getElementById('modal-video');
+    modalVideo.currentTime = Math.min(modalVideo.duration, modalVideo.currentTime + 10);
+}
+
+function toggleFullScreen() {
+    const modalContent = document.querySelector('.modal-content');
+    if (!document.fullscreenElement) {
+        modalContent.requestFullscreen().catch(err => {
+            console.error("Error al entrar en pantalla completa:", err);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+}
+        function switchTab(tab) {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.tab-btn[onclick="switchTab('${tab}')"]`).classList.add('active');
+        }
+
+        function resetNavButtons() {
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(btn => btn.classList.remove('active'));
+}
+
+function showAllSections() {
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => {
+        section.style.display = 'block';
+        const cards = section.querySelectorAll('.content-card');
+        cards.forEach(card => card.style.display = 'block');
+    });
+}
+
+function filterNewMovies() {
+    resetNavButtons();
+    document.querySelector('.nav-btn[onclick="filterNewMovies()"]').classList.add('active');
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => {
+        if (section.getAttribute('data-new') === 'true') {
+            section.style.display = 'block';
+            const cards = section.querySelectorAll('.content-card');
+            cards.forEach(card => card.style.display = 'block');
+        } else {
+            section.style.display = 'none';
+        }
+    });
+}
+
+function filterMovies() {
+    resetNavButtons();
+    document.querySelector('.nav-btn[onclick="filterMovies()"]').classList.add('active');
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => {
+        if (section.getAttribute('data-type') === 'movies') {
+            section.style.display = 'block';
+            const cards = section.querySelectorAll('.content-card');
+            cards.forEach(card => card.style.display = 'block');
+        } else {
+            section.style.display = 'none';
+        }
+    });
+}
+
+function filterTVSeries() {
+    resetNavButtons();
+    document.querySelector('.nav-btn[onclick="filterTVSeries()"]').classList.add('active');
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => {
+        if (section.getAttribute('data-type') === 'series') {
+            section.style.display = 'block';
+            // Mostrar todas las tarjetas dentro de la sección
+            const cards = section.querySelectorAll('.content-card');
+            cards.forEach(card => card.style.display = 'block');
+        } else {
+            section.style.display = 'none';
+        }
+    });
+}
+
+        function filterTVSeries() {
+            resetNavButtons();
+            document.querySelector('.nav-btn[onclick="filterTVSeries()"]').classList.add('active');
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                if (section.getAttribute('data-type') === 'series') {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        // Funciones para la búsqueda
+        function toggleSearch() {
+            const searchInputContainer = document.getElementById('searchInputContainer');
+            if (searchInputContainer.style.display === 'flex') {
+                searchInputContainer.style.display = 'none';
+            } else {
+                searchInputContainer.style.display = 'flex';
+                document.getElementById('searchInput').focus();
+            }
+        }
+
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim().toLowerCase();
+            
+            if (!query) {
+                alert('Por favor, ingresa un término de búsqueda.');
+                return;
+            }
+
+            // Buscar en la lista de películas/series
+            const foundMedia = mediaList.find(media => media.title.toLowerCase().includes(query));
+
+            if (foundMedia) {
+                // Si se encuentra, actualizar el banner con la información de la película/serie
+                updateBanner(
+                    foundMedia.title,
+                    foundMedia.imageUrl,
+                    foundMedia.imdbRating,
+                    foundMedia.year,
+                    foundMedia.duration,
+                    foundMedia.genre,
+                    foundMedia.description,
+                    foundMedia.videoUrl,
+                    foundMedia.modalTitle
+                );
+                // Hacer scroll al banner principal
+                document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert(`No se encontró ninguna película o serie con el nombre "${searchInput.value}".`);
+            }
+
+            // Limpiar el campo de búsqueda y ocultarlo
+            searchInput.value = '';
+            document.getElementById('searchInputContainer').style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+    updateBanner(
+        "Real Steel",
+        "imagenes/real steel.png", // Cambia esta URL por la correcta
+        "8.2 (12,827)",
+        "• 2021",
+        "• 1 hour 55 minutes",
+        "• Sci-fi",
+        "A failed boxer who loses his chance to win a title when powerful robots weighing 90 kilos and more than two meters tall begin to compete.",
+        "peliculas/real steel.mp4",
+        "Real Steel"
+    );
+
+    const cards = document.querySelectorAll('.content-card');
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const onclickAttr = card.getAttribute('onclick');
+            if (onclickAttr) {
+                eval(onclickAttr);
+            }
+        });
+    });
+
+    // Agregar evento para resetear el filtro al hacer clic en el logo
+    document.querySelector('.logo-container').addEventListener('click', () => {
+        resetNavButtons();
+        showAllSections();
+    });
+
+    // Agregar evento para buscar con "Enter"
+    document.getElementById('searchInput').addEventListener('keypress', (e) => { 
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+});
+
+        document.addEventListener('mousemove', () => {
+            clearTimeout(inactivityTimeout);
+            inactivityTimeout = setTimeout(() => {
+                document.body.style.cursor = 'none';
+            }, 2000);
+            document.body.style.cursor = 'auto';
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

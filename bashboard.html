@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - MyJo</title>
+    <link rel="stylesheet" href="stylesdashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="dashboard.js" defer></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Dashboard de Administración - MyJo</h1>
+        
+        <!-- Sección 2: Estadísticas -->
+        <div class="stats">
+            <div class="card">
+                <h3>Usuarios Registrados</h3>
+                <p id="usersCount">1234</p>
+            </div>
+            <div class="card">
+                <h3>Películas Disponibles</h3>
+                <p id="moviesCount">567</p>
+            </div>
+            <div class="card">
+                <h3>Ingresos Totales</h3>
+                <p id="revenue">$89,000</p>
+            </div>
+        </div>
+
+        <!-- Sección 3: Gráfico de Estadísticas de Vistas -->
+        <div class="chart-container">
+            <h2>Estadísticas de Vistas</h2>
+            <canvas id="viewsChart"></canvas>
+        </div>
+
+        <!-- Sección 4: Gráfico de Usuarios por Plan -->
+        <div class="chart-container">
+            <h2>Usuarios por Plan</h2>
+            <canvas id="usersPlanChart"></canvas>
+        </div>
+
+        <!-- Sección 5: Gráfico de Nuevos Registros -->
+        <div class="chart-container">
+            <h2>Registros Nuevos</h2>
+            <canvas id="newUsersChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                document.getElementById('usersCount').innerText = 1500;
+                document.getElementById('moviesCount').innerText = 620;
+                document.getElementById('revenue').innerText = '$95,000';
+            }, 1000);
+
+            const ctx1 = document.getElementById('viewsChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+                    datasets: [{
+                        label: 'Vistas Mensuales',
+                        data: [500, 700, 1200, 1500, 2100, 2800],
+                        borderColor: '#1db9f0',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: 14,
+                                    family: 'Arial'
+                                },
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: { color: '#ffffff' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        x: {
+                            ticks: { color: '#ffffff' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    }
+                }
+            });
+
+            const ctx2 = document.getElementById('usersPlanChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Básico', 'Estándar', 'Premium'],
+                    datasets: [{
+                        label: 'Usuarios por Plan',
+                        data: [150, 300, 550],
+                        backgroundColor: ['#d3d3d3', '#36a2eb', '#e5e4e2'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true, // Aseguramos que la leyenda esté visible
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 14,
+                                    family: 'Arial'
+                                },
+                                color: '#ffffff', // Color blanco para que sea visible
+                                padding: 20 // Más espacio para evitar solapamiento
+                            }
+                        }
+                    }
+                }
+            });
+
+            const ctx3 = document.getElementById('newUsersChart').getContext('2d');
+            new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+                    datasets: [{
+                        label: 'Nuevos Registros',
+                        data: [50, 60, 70, 90, 120, 150],
+                        backgroundColor: '#ffcd56',
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: 14,
+                                    family: 'Arial'
+                                },
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: { color: '#ffffff' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        x: {
+                            ticks: { color: '#ffffff' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+<style>
+    body {
+        background-color: #0b0f19;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh; /* Asegura que el cuerpo ocupe toda la altura de la ventana */
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .dashboard-container {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #131722;
+        border-radius: 15px;
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+        min-height: calc(100vh - 40px); /* Asegura que el contenedor ocupe la altura disponible */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .stats {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    .card {
+        background: #1f2a48;
+        padding: 20px;
+        border-radius: 10px;
+        width: 200px;
+        margin: 10px;
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .chart-container {
+        margin-top: 30px;
+        width: 100%;
+        height: 300px; /* Altura fija para cada gráfico */
+        position: relative;
+        background: #1f2a48;
+        border-radius: 10px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    h1 {
+        color: #1db9f0;
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    h2 {
+        color: #1db9f0;
+        font-size: 22px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    p {
+        font-size: 18px;
+        color: #ffffff;
+    }
+    canvas {
+        max-width: 100%;
+        max-height: 200px; /* Limita la altura del canvas para que la leyenda tenga espacio */
+    }
+</style>

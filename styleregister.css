@@ -1,0 +1,255 @@
+/* Reset básico de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Pro Display', sans-serif;
+    background-color: #000;
+    height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal con imagen de fondo */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('imagenes/Collage de fotos vertical Pizarrón de vida saturado marrón (1) 1.png');
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Superposición oscura para el fondo */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Capa oscura semi-transparente para la imagen de fondo */
+    z-index: 1;
+}
+
+/* Contenedor del formulario (cuadro oscuro semi-transparente) */
+.form-container {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.9); /* Fondo oscuro semi-transparente como en el register */
+    border-radius: 20px; /* Bordes redondeados como en el register */
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 442px; /* Igual que en el register */
+    box-sizing: border-box;
+    color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra sutil como en el register */
+    backdrop-filter: blur(5px); /* Opcional: efecto de desenfoque para un look más moderno */
+}
+
+/* Logo */
+.logo {
+    width: 300px; /* Igual que en el register */
+    max-width: 321px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Título */
+h2 {
+    font-size: 26px; /* Igual que en el register */
+    color: white;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Grupo de inputs */
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+    text-align: left;
+    width: 100%; /* Aseguramos que ocupe todo el ancho */
+}
+
+.input-group label {
+    color: white;
+    font-size: 18px; /* Igual que en el register */
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px; /* Igual que en el register */
+    margin-top: 5px;
+    border: 1px solid #ccc; /* Ajustado para coincidir con el register */
+    border-radius: 5px; /* Ajustado para coincidir con el register */
+    background-color: #2c2c2c; /* Fondo oscuro como en el register */
+    color: white; /* Texto blanco para contraste */
+    font-size: 14px; /* Igual que en el register */
+    box-sizing: border-box;
+    opacity: 0.20; /* Manteniendo la opacidad del login original */
+}
+
+/* Ícono de ojo para la contraseña */
+.eye-icon {
+    position: absolute;
+    right: 15px; /* Ajustado para alinearse con el diseño */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 3;
+    color: #fff; /* Ícono blanco para contraste */
+}
+
+/* Botón de login */
+.login-button {
+    width: 100%;
+    padding: 12px; /* Igual que en el register */
+    background: linear-gradient(90deg, #025D96 0%, #001E30 95%); /* Igual que en el register */
+    border: none;
+    border-radius: 60px; /* Ajustado para coincidir con el register */
+    color: white;
+    font-size: 18px; /* Igual que en el register */
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px; /* Igual que en el register */
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 93, 150, 0.5); /* Sombra azul como en el register */
+}
+
+.login-button:hover {
+    background: linear-gradient(90deg, #015990 0%, #001E30 95%); /* Igual que en el register */
+}
+
+/* Texto MIJO */
+.mijo-text {
+    font-size: 14px; /* Igual que en el register */
+    font-weight: 400;
+    margin-bottom: 10px;
+    margin-top: 15px; /* Ajustado para espaciado como en el register */
+    color: #ccc; /* Gris claro para contraste, como en el register */
+}
+
+.mijo-text strong {
+    color: #056DAD; /* Azul para "MIJO", como en el register */
+}
+
+/* Enlace para registrarse */
+.already-account {
+    margin-top: 15px; /* Igual que en el register */
+    font-size: 14px; /* Igual que en el register */
+    font-weight: 400;
+    color: #ccc; /* Gris claro para contraste, como en el register */
+}
+
+.signin-link {
+    color: #056DAD; /* Azul para el enlace "Register", como en el register */
+    text-decoration: none;
+    font-weight: 700; /* Ajustado para coincidir con el register */
+}
+
+.signin-link:hover {
+    text-decoration: underline;
+}
+
+/* Recuperar contraseña */
+.recover-password {
+    font-size: 14px; /* Igual que en el register */
+    font-weight: 400;
+    color: #056DAD; /* Azul como en el register */
+    cursor: pointer;
+    margin-top: 10px; /* Ajustado para espaciado */
+}
+
+.recover-password:hover {
+    text-decoration: underline;
+}
+
+/* Mensaje de estado */
+.status-message {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff; /* Blanco para contraste */
+    text-align: center;
+}
+
+.status-message.error {
+    color: #ff4444; /* Rojo para errores */
+}
+
+.status-message.success {
+    color: #00ff00; /* Verde para éxito */
+}
+
+/* Media Queries para Responsividad (igual que en el register) */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+    .form-container {
+        padding: 30px;
+        width: 80%;
+    }
+    .logo {
+        width: 80px; /* Más pequeño en móviles, como en el register */
+        height: auto; /* Ajustado proporcionalmente */
+    }
+    h2 {
+        font-size: 22px; /* Ajustado para móviles */
+    }
+    .input-group label {
+        font-size: 16px; /* Ajustado para móviles */
+    }
+    .input-group input {
+        padding: 10px;
+        font-size: 14px; /* Igual que en el register */
+    }
+    .login-button {
+        font-size: 16px; /* Ajustado para móviles */
+        padding: 10px;
+    }
+    .mijo-text, .already-account, .recover-password, .status-message {
+        font-size: 12px; /* Igual que en el register */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+    .form-container {
+        padding: 40px;
+        width: 90%;
+    }
+    .logo {
+        width: 90px; /* Intermedio en tablets, como en el register */
+        height: auto; /* Ajustado proporcionalmente */
+    }
+    h2 {
+        font-size: 24px; /* Ajustado para tablets */
+    }
+    .input-group label {
+        font-size: 17px; /* Ajustado para tablets */
+    }
+    .input-group input {
+        padding: 12px;
+        font-size: 15px; /* Igual que en el register */
+    }
+    .login-button {
+        font-size: 17px; /* Ajustado para tablets */
+        padding: 12px;
+    }
+    .mijo-text, .already-account, .recover-password, .status-message {
+        font-size: 13px; /* Igual que en el register */
+    }
+}

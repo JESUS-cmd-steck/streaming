@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styleslogin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="background-overlay"></div>
+        <div class="form-container">
+            <img class="logo" src="imagenes/LogoF.png" alt="Logo">
+            <div class="title">Register</div>
+            <div class="subtitle">Register on MIJO</div>
+
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your Name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="tu@Email.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+
+            <div id="status-message" class="status-message"></div>
+
+            <button class="submit-button" id="register-button">Register</button>
+
+            <div class="already-account">
+                <span>Already have an account?</span>
+                <a href="register.html" class="signin-link">Sign in</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+
+            // Guardar usuario en localStorage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const existingUser = users.find(user => user.email === email);
+            if (!existingUser) {
+                users.push({ email, name });
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+
+            // Establecer estado de autenticación
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('loggedInEmail', email);
+
+            // Redirigir a la página principal
+            window.location.href = 'index.html'; // Ajusta el nombre de tu archivo principal
+        });
+    </script>
+
+    <script src="scriptregister.js"></script>
+</body>
+</html>
